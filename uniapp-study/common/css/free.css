@@ -104,6 +104,10 @@
 .flex-3{ flex: 3; }
 .flex-4{ flex: 4; }
 .flex-5{ flex: 5; }
+.flex-center{
+	display: flex;
+	justify-content: center;
+}
 /* #ifndef APP-PLUS-NVUE */
 .flex-shrink{ flex-shrink: 0; }
 /* #endif */

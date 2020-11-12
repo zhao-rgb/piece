@@ -6,11 +6,47 @@
 				"navigationBarTitleText": "首页"
 			}
 		}
-	],
+	    ,{
+            "path" : "pages/music-detail/music-detail",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",
 		"navigationBarBackgroundColor": "#F8F8F8",
 		"backgroundColor": "#F8F8F8"
+	},
+	"tabBar": {
+		"backgroundColor": "#FFFFFF",
+		"borderStyle": "black",
+		"color": "#BDBDBD",
+		"selectedColor": "#009CFF",
+		"list": [{
+			"iconPath": "static/tabbar/index.png",
+			"selectedIconPath": "static/tabbar/index-selected.png",
+			"pagePath": "pages/index/index",
+			"text": "首页"
+		}, {
+			"iconPath": "static/tabbar/paper.png",
+			"selectedIconPath": "static/tabbar/paper-selected.png",
+			"pagePath": "pages/list/list",
+			"text": "分类"
+		}, {
+			"iconPath": "static/tabbar/can.png",
+			"selectedIconPath": "static/tabbar/can-selected.png",
+			"pagePath": "pages/my/my",
+			"text": "收藏"
+		}, {
+			"iconPath": "static/tabbar/home.png",
+			"selectedIconPath": "static/tabbar/home-selected.png",
+			// "pagePath": "pages/my/my",
+			"text": "我的"
+		}]
 	}
 }
