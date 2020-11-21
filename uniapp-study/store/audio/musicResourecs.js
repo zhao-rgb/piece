@@ -9,7 +9,7 @@ export default {
 			}
 		},
 		{
-			id: 10001,
+			id: 10002,
 			name: '老陈酒 - 蜜蜂',
 			src: '/static/mp3/mifen.mp3',
 			singer: {
@@ -18,7 +18,7 @@ export default {
 			}
 		},
 		{
-			id: 10002,
+			id: 10003,
 			name: 'AKa诉阳 - 追光者 (Remix)',
 			src: '/static/mp3/Remix.mp3',
 			singer: {
