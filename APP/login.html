@@ -35,6 +35,13 @@
         border-radius: 8px;
       }
 
+      .border-round1 {
+        width: 100%;
+        height: 400px;
+        margin-left: -620px;
+        border-radius: 8px;
+      }
+
       .form {
         padding-left: 10px;
         height: 50px;
@@ -108,13 +115,13 @@
           <img
             class="border-round"
             src="https://kkkksslls.oss-cn-beijing.aliyuncs.com/campus/短发11.jpeg"
-            model="heighFit"
+            mode="heightFit"
             v-show="!isFaceLogin"
           />
           <video
             id="video"
             width="630px"
-            height="370px"
+            height="400px"
             autoplay="autoplay"
             class="border-round"
             v-show="isFaceLogin"
@@ -122,8 +129,8 @@
           <canvas
             id="canvas"
             width="630px"
-            height="370px"
-            class="border-round"
+            height="400px"
+            class="border-round1"
             v-show="isFaceLogin"
           ></canvas>
         </div>
@@ -207,11 +214,25 @@
               let video = document.getElementById("video");
               let canvas = document.getElementById("canvas");
               let ctx = canvas.getContext("2d");
-              ctx.drawImage(video, 0, 0, 630, 370);
+              ctx.drawImage(video, 0, 0, 630, 400);
               let img = document.getElementById("canvas").toDataURL();
               // 截取base64图片
               console.log(img);
               let img64 = img.split("base64,")[1];
+              axios
+                .post("http://localhost:8005/adminMsg/adminFaceLogin", {
+                  username: username,
+                  img64: img64,
+                })
+                .then((res) => {
+                  console.log(res.data);
+                  if (res.data.status == 200) {
+                    // 登录成功，跳转到admin首页
+                    alert("人脸识别功能！点击确认进入系统");
+                  } else {
+                    alert(res.data.msg);
+                  }
+                });
             } else {
               let password = this.password;
               if (password == null || password == undefined || password == "") {
@@ -251,7 +272,7 @@
               return;
             }
             let constraints = {
-              video: { width: 630, height: 370 },
+              video: { width: 630, height: 400 },
               audio: false,
             };
             //获得摄像头
