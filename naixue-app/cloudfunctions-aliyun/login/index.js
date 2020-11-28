@@ -4,7 +4,7 @@ const jwt = require('jwt-simple');
 const db = uniCloud.database();
 const loginConfig = {
 	appId: 'wxbf5467f912902705',
-	appSecret: 'ed7cf8456fddfa4934a8eb92f4bc26f3'
+	appSecret: '870ddba40ae908d35cca0443b3034445'
 };
 exports.main = async (event, context) => {
 	//event为客户端上传的参数
