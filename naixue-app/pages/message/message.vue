@@ -85,7 +85,7 @@ export default {
 	display: flex;
 	flex-direction: column;
 	padding: 10rpx;
-	width: 100%;
+	width: 96%;
 }
 .input_box {
 	margin-top: 10rpx;
@@ -102,8 +102,8 @@ export default {
 }
 .submit {
 	margin-top: 20rpx;
-	background-color: #00aaff;
-	color: #333333;
+	background-color: rgb(240,175,171);
+	color: #ffffff;
 	width: 80%;
 }
 .list {
@@ -111,7 +111,7 @@ export default {
 	flex-direction: column;
 }
 .item {
-	width: 100%;
+	width: 94%;
 	padding: 20rpx;
 	margin: 5rpx;
 	display: flex;
@@ -134,7 +134,7 @@ export default {
 	margin: 10rpx;
 }
 .user_name {
-	color: #007aff;
+	color: #f0afab;
 	font-size: 30rpx;
 	display: flex;
 	flex: auto;
@@ -147,7 +147,7 @@ export default {
 .delete {
 	width: 60rpx;
 	height: 40rpx;
-	background-color: #dd524d;
+	background-color: #f0afab;
 	color: #ffffff;
 	border-radius: 10rpx;
 	text-align: center;
