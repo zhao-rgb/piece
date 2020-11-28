@@ -2,5 +2,7 @@
   "navigationBarTitleText": "修改地址",
   "navigationBarTextStyle": "black",
   "navigationBarBackgroundColor": "#F8F8F8",
-  "usingComponents": {}
+  "usingComponents": {
+    "list-cell": "/components/list-cell/list-cell"
+  }
 }
