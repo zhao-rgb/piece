@@ -66,6 +66,14 @@
 				"navigationBarTextStyle": "black",
 				"navigationBarBackgroundColor": "#F8F8F8"
 			}
+		}, {
+			"path": "pages/stores/stores",
+			"style": {
+				"navigationBarBackgroundColor": "#F8F8F8",
+				"navigationBarTextStyle": "black",
+				"navigationBarTitleText": "选择门店"
+			}
+
 		}
 	],
 	"globalStyle": {
