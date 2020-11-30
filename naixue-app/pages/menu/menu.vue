@@ -395,7 +395,7 @@ export default {
 			});
 		},
 		init() {
-			if (Object.keys(this.choseStore).length == 0 && this.orderType == 'takein') {
+			if (Object.keys(this.choseStore).length == 0) {
 				uni.navigateTo({
 					url: '../stores/stores'
 				});
@@ -439,7 +439,7 @@ export default {
 				this.calcSize();
 			}
 			this.currentCateId = id;
-			this.$nextTick(() => (this.cateScrollTop = this.goods.find(item => item.id == id).top));
+			this.$nextTick(() => (this.cateScrollTop = this.goods.find(item => item._id == id).top));
 		},
 		handleGoodsScroll({ detail }) {
 			if (!this.sizeCalcState) {

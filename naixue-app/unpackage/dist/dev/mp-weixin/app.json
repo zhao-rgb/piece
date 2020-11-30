@@ -7,7 +7,9 @@
     "pages/login/login",
     "pages/address/address",
     "pages/address/add",
-    "pages/address/edit"
+    "pages/address/edit",
+    "pages/stores/stores",
+    "pages/pay/pay"
   ],
   "subPackages": [],
   "window": {
@@ -48,6 +50,11 @@
       }
     ]
   },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "查找附件门店"
+    }
+  },
   "usingComponents": {},
-  "sitemapLocation": "sitemap62.json"
+  "sitemapLocation": "sitemap94.json"
 }

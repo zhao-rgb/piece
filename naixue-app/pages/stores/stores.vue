@@ -13,7 +13,7 @@
 			</view>
 		</view>
 		<view class="content">
-			<view class="store" v-for="(store, index) in storeData" :key="index" @tap="tapStore">
+			<view class="store" v-for="(store, index) in storeData" :key="index" @tap="tapStore(store)">
 				<view class="store-left">
 					<view class="store-title">
 						<view class="store-name">{{ store.name }}</view>
@@ -42,8 +42,10 @@ import { mapMutations } from 'vuex';
 export default {
 	data() {
 		return {
-			latitude: '',
-			longitude: '',
+			// latitude: '',
+			// longitude: '',
+			latitude: '32.125589',
+			longitude: '118.941013',
 			markers: [],
 			storeData: []
 		};
