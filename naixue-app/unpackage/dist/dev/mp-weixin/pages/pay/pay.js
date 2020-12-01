@@ -244,7 +244,7 @@ var _vuex = __webpack_require__(/*! vuex */ 12);function ownKeys(object, enumera
     pay: function pay() {
       uni.removeStorageSync('cart');
       uni.reLaunch({
-        url: '/pages/take-foods/take-foods?order_id=' + '160679168626adab72' });
+        url: '/pages/take-foods/take-foods?order_id=' + '160679234126adab72' });
 
     } }) };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"], __webpack_require__(/*! ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/uni-cloud/dist/index.js */ 27)["default"]))
