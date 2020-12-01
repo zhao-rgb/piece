@@ -10,7 +10,8 @@
     "pages/address/edit",
     "pages/stores/stores",
     "pages/pay/pay",
-    "pages/remark/remark"
+    "pages/remark/remark",
+    "pages/member-code/member-code"
   ],
   "subPackages": [],
   "window": {
@@ -56,6 +57,5 @@
       "desc": "查找附件门店"
     }
   },
-  "usingComponents": {},
-  "sitemapLocation": "sitemap73.json"
+  "usingComponents": {}
 }

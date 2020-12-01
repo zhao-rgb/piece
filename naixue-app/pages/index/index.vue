@@ -31,7 +31,7 @@
 						<view class="iconfont iconarrow-right"></view>
 					</view>
 				</view>
-				<view class="grcode_section">
+				<view class="grcode_section" @tap="memberCode">
 					<image src="../../static/images/index/qrcode.png"></image>
 					<text>会员码</text>
 				</view>
@@ -122,6 +122,11 @@ export default {
 					url: '../address/address?is_choose=true'
 				});
 			}
+		},
+		memberCode() {
+			uni.navigateTo({
+				url: '/pages/member-code/member-code'
+			});
 		}
 	}
 };
