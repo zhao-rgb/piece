@@ -94,10 +94,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
 var components = {
   modal: function() {
-    return __webpack_require__.e(/*! import() | components/modal/modal */ "components/modal/modal").then(__webpack_require__.bind(null, /*! @/components/modal/modal.vue */ 91))
+    return __webpack_require__.e(/*! import() | components/modal/modal */ "components/modal/modal").then(__webpack_require__.bind(null, /*! @/components/modal/modal.vue */ 103))
   },
   popupLayer: function() {
-    return __webpack_require__.e(/*! import() | components/popup-layer/popup-layer */ "components/popup-layer/popup-layer").then(__webpack_require__.bind(null, /*! @/components/popup-layer/popup-layer.vue */ 98))
+    return __webpack_require__.e(/*! import() | components/popup-layer/popup-layer */ "components/popup-layer/popup-layer").then(__webpack_require__.bind(null, /*! @/components/popup-layer/popup-layer.vue */ 110))
   }
 }
 var render = function() {
@@ -482,7 +482,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var _vuex = __webpack_require__(/*! vuex */ 12);function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var model = function model() {__webpack_require__.e(/*! require.ensure | components/modal/modal */ "components/modal/modal").then((function () {return resolve(__webpack_require__(/*! @/components/modal/modal */ 91));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var popupLayer = function popupLayer() {__webpack_require__.e(/*! require.ensure | components/popup-layer/popup-layer */ "components/popup-layer/popup-layer").then((function () {return resolve(__webpack_require__(/*! ../../components/popup-layer/popup-layer */ 98));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+var _vuex = __webpack_require__(/*! vuex */ 12);function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}var model = function model() {__webpack_require__.e(/*! require.ensure | components/modal/modal */ "components/modal/modal").then((function () {return resolve(__webpack_require__(/*! @/components/modal/modal */ 103));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var popupLayer = function popupLayer() {__webpack_require__.e(/*! require.ensure | components/popup-layer/popup-layer */ "components/popup-layer/popup-layer").then((function () {return resolve(__webpack_require__(/*! ../../components/popup-layer/popup-layer */ 110));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 {
@@ -737,16 +737,81 @@ var _vuex = __webpack_require__(/*! vuex */ 12);function ownKeys(object, enumera
     handleCartItemAdd: function handleCartItemAdd(index) {
       this.cart[index].number += 1;
     },
-    topay: function topay() {
+    topay: function topay() {var _this7 = this;
       if (!this.isLogin) {
         uni.navigateTo({
           url: '../login/login' });
 
         return;
       }
-      uni.navigateTo({
-        url: '../pay/pay?total=' + this.getCartGoodsPrice });
+      uni.showLoading({
+        title: '加载中...' });
 
+      return uniCloud.
+      callFunction({
+        name: 'validateToken',
+        data: {
+          token: uni.getStorageSync('token') } }).
+
+
+      then(function (res) {
+        if (res.result.status === 0) {
+          uni.hideLoading();
+          if (_this7.orderType == 'takein') {
+            var data = {
+              openId: res.result.openId,
+              goodsInOrder: _this7.cart,
+              chooseStore: _this7.choseStore.name };
+
+
+            return uniCloud.callFunction({
+              name: 'order',
+              data: {
+                data: data,
+                action: 'addTakein' } });
+
+
+          } else if (_this7.orderType == 'takeout') {
+            var _data = {
+              openId: res.result.openId,
+              goodsInOrder: _this7.cart,
+              chooseStore: _this7.choseStore.name };
+
+            return UniCloud.callFunction({
+              name: 'order',
+              data: {
+                data: _data,
+                action: 'addTakein' } });
+
+
+          } else if (_this7.orderType == 'takeout') {
+            var _data2 = {
+              openId: res.result.openId,
+              goodsInOrder: _this7.cart,
+              chooseStore: _this7.choseAddress.storeName,
+              order_address: _this7.choseAddress._id };
+
+            return uniCloud.callFunction({
+              name: 'order',
+              data: {
+                data: _data2,
+                action: 'addTakeout' } });
+
+
+          }
+        } else {
+          uni.hideLoading();
+          uni.showModal({
+            content: res.result.msg,
+            showCancel: false });
+
+        }
+      }).
+      then(function (resData) {
+        uni.navigateTo({
+          url: '../pay/pay?order_id=' + resData.result.order_id });
+
+      });
     } }) };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"], __webpack_require__(/*! ./node_modules/@dcloudio/vue-cli-plugin-uni/packages/uni-cloud/dist/index.js */ 27)["default"]))
 

@@ -3,9 +3,28 @@
 	<view class="container w-100 h-100 overflow-hidden">
 		<view class="textarea">
 			<textarea
-			placeholder-class="text-color-assist font-size-base"
-			v-model="remark"
-			class="{'text-color-danger' : remarkLength > 50,"></textarea>
+				placeholder-class="text-color-assist font-size-base"
+				v-model="remark"
+				class="bg-white w-100 border-box font-size-base remark"
+				:class="{ 'text-color-danger': remarkLength > 50, 'text-color-assist': remarkLength <= 50 }"
+				placeholder="请填写备注信息"
+				focus
+			/>
+			<view
+				class="tips"
+				:class="{ 'text-color-danger': remarkLength > 50, 'text-color-assist': remarkLength <= 50 }"
+			>
+				{{ remarkLength }}/50
+			</view>
+		</view>
+		<view class="d-flex font-size-base text-color-assist" style="margin: 40rpx 0;">快捷输入</view>
+		<view class="quick-inputs d-flex flex-wrap justify-content-start">
+			<view class="quick-input" v-for="(item, index) in quickInputs" :key="index" @tap="handleQuickInput(item)">
+				{{ item }}
+			</view>
+		</view>
+		<view class="d-flex just-content-center align-items-center " style="margin-top: 60rpx;">
+			<button type="primary" class="submit-btn font-size-base" @tap="submit">完成</button>
 		</view>
 	</view>
 </template>
@@ -13,9 +32,32 @@
 <script>
 export default {
 	data() {
-		return {};
+		return {
+			remark: '',
+			quickInputs: ['请放门把手上', '请放门口', '轻放前台桌上', '如地址封闭管理，请电话与我联系']
+		};
 	},
-	methods: {}
+	onLoad({ remark }) {
+		this.remark = remark;
+	},
+	computed: {
+		remarkLength() {
+			return this.remark.length;
+		},
+		isDanger() {
+			return this.remark.length > 50;
+		}
+	},
+	methods: {
+		handleQuickInput(item) {
+			this.remark = this.remark.concat('', item);
+		},
+		submit() {
+			uni.navigateTo({
+				url: '/pages/pay/pay?remark=' + this.remark
+			});
+		}
+	}
 };
 </script>
 

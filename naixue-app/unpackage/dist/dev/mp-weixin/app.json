@@ -9,7 +9,8 @@
     "pages/address/add",
     "pages/address/edit",
     "pages/stores/stores",
-    "pages/pay/pay"
+    "pages/pay/pay",
+    "pages/remark/remark"
   ],
   "subPackages": [],
   "window": {
@@ -56,5 +57,5 @@
     }
   },
   "usingComponents": {},
-  "sitemapLocation": "sitemap94.json"
+  "sitemapLocation": "sitemap73.json"
 }
